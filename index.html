@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Health Tracker</title>
+  <style>
+    p{
+      color : green;
+      font-size: 30px;
+    }
+    body{
+      background-color: azure;
+    }
+    form{
+      align-self: center;
+    }
+  </style>
+</head>
+<body>
+  <center><h1>Health Tracker</h1></center>
+  <p>Please enter the below details and click on "Track" for the health fitness</p>
+
+  <form action="/track" method="post">
+
+    <label for="blood_pressure">Blood pressure:</label>
+    <input type="number" name="blood_pressure" id="blood_pressure" placeholder="Enter for 80"><br>
+
+    <label for="heart_rate">Enter Heart rate:</label>
+    <input type="number" name="heart_rate" id="heart_rate"><br>
+
+    <label for="steps">No_of_Steps:</label>
+    <input type="number" name="Steps" id="step_count"><br>
+
+    <button type="submit">Track</button>
+  </form>
+
+  <div id="health_data">
+    <table border="1">
+      <tbody>
+        </tbody>
+    </table>
+  </div>
+  <script>
+    const form = document.querySelector('form');
+    var c = 0;
+const heartRateInput = document.querySelector('#heart_rate');
+const stepInput = document.querySelector('#step_count');
+const bpInput = document.querySelector('#blood_pressure');
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const heartRate = heartRateInput.value;
+  const step = stepInput.value;
+  const bp = bpInput.value;
+  if (heartRate > 120 || heartRate < 60) {
+    alert('Your heart rate is not good, Please relax yourself');
+    c = c + 1;
+  }
+  else if (step > 2000){
+    alert('Please take any Food (or) drink some water');
+    c = c + 1;
+  }
+  else if (bp>120){
+    alert('Please calm down yourself');
+    c = c + 1;
+  }
+  else if (c==0) {
+    alert('Your Health is good and your body is fit.');
+  }
+});
+  </script>
+</body>
+</html>
